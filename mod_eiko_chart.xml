@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * @copyright	Copyright (c) 2015 EINSATZKOMPONENTE.DE. All rights reserved.
+ * @license		GNU General Public License version 2 or later; see LICENSE.txt
+ */
+-->
+<extension type="module" version="3.0" client="site" method="upgrade">
+	<name>mod_eiko_chart</name>
+	<author>Ralf Meyer</author>
+	<creationDate>January 2015</creationDate>
+	<copyright>Copyright (c) 2015 EINSATZKOMPONENTE.DE. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>ralf.meyer@einsatzkomponente.de</authorEmail>
+	<authorUrl>einsatzkomponente.de</authorUrl>
+	<version>1.0.0</version>
+	<description><![CDATA[<div style="border:1px solid #000; padding-left:5px;"><span style=" font-size: 18px; color:#F00;"><b>mod_eiko_chart für J3.x</b></span><br/><br/><span style="font-size:10px;"></span>Das Modul dient zur Anzeige einer Statistik für die Einsatzberichte aus der Einsatzkomponente für J3<br/><br/>Für weitere Informationen besuchen Sie bitte unser Supportforum <a href="http://www.einsatzkomponente.de" target="_blank">einsatzkomponente.de</a> </div>
+	]]></description>	
+	
+<files>
+	<filename module="mod_eiko_chart">mod_eiko_chart.php</filename>
+	<filename>index.html</filename>
+    <folder>tmpl</folder>
+</files>
+
+
+<config>
+		<fields name="params">
+			<fieldset name="basic">
+
+	<field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
+    <field name="@spacer" type="spacer" default="" label="" description="" />
+					
+					
+					<field
+					name="chart"
+					type="radio"
+					class="btn-group"
+					label="Die Statistik 3-Dimensional anzeigen ?"
+					description=""
+					default="1">
+					<option
+						value="false">JNO</option>
+					<option
+						value="true">JYES</option>
+				</field>
+
+	<field name="selectedYear" type="text" default="2015" label="Statistik Jahr :" description="Wählen Sie hier das Jahr, das in der Statistik angezeigt werden soll" />
+	
+				<field name="selectedYear" type="sql" class="inputbox"
+            label="Filter Jahr :"
+            description="Hier können Sie die Anzeige nach Jahren filtern" 
+            query="SELECT 0 AS `id`,  '-- alle Jahre --' AS `name` UNION SELECT Year(date1) AS `id`, Year(date1) as `title` FROM `#__eiko_einsatzberichte` WHERE `state`='1' GROUP BY `title`" 
+			key_field="name" 
+			value_field="name"
+			/> 
+				<field
+					name="curyear"
+					type="radio"
+					class="btn-group"
+					label="Nur Daten des aktuellen Jahres anzeigen ?"
+					description=""
+					default="1">
+					<option
+						value="0">JNO</option>
+					<option
+						value="1">JYES</option>
+				</field>
+       <field
+            name="title_color"
+            type="color"
+    	    label="Farbe des Titels : "
+            description=""
+            default="#ffffff"
+	        required ="required" /> 
+		<field name="title_size" type="list" default="16" label="Schriftgröße des Titels :" description="">
+			<option value="8">8px</option>
+			<option value="10">10px</option>
+			<option value="12">12px</option>
+			<option value="14">14px</option>
+			<option value="16">16px</option>
+			<option value="18">18px</option> 
+		</field>
+
+       <field
+            name="legend_color"
+            type="color"
+    	    label="Farbe der Legende : "
+            description=""
+            default="#ffffff"
+	        required ="required" />
+		<field name="legend_size" type="list" default="10" label="Schriftgröße der Legende :" description="">
+			<option value="8">8px</option>
+			<option value="10">10px</option>
+			<option value="12">12px</option>
+			<option value="14">14px</option>
+			<option value="16">16px</option>
+			<option value="18">18px</option>
+		</field>
+		
+       <field
+            name="slice_text_color"
+            type="color"
+    	    label="Farbe des Textes im Chart : "
+            description=""
+            default="#ffffff"
+	        required ="required" />
+			
+			
+    <field name="@spacer" type="spacer" default="" label="" description="" />
+	<field name="width" type="text" default="600px" label="Modulbreite:" description="Modulbreite z.b. 300px oder 100%" />
+	<field name="height" type="text" default="300px" label="Modulhöhe:" description="Modulhöhe z.b. 300px oder 100%" />
+    <field name="@spacer" type="spacer" default="" label="" description="" />
+	<field name="pwidth" type="text" default="630" label="Grafikbreite in px:" description="Grafikbreite in Pixel" />
+	<field name="pheight" type="text" default="300" label="Grafikhöhe in px:" description="Grafikhöhe in Pixel" />
+    <field name="@spacer" type="spacer" default="" label="" description="" />
+
+</fieldset>
+		</fields>
+	</config>
+</extension>
+
