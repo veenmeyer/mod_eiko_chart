@@ -30,8 +30,8 @@ $selectedYear = $app->getUserStateFromRequest( "com_einsatzkomponente.selectedYe
 if ($params->get( 'selectedYear', '2015' ) == '-- alle Jahre --' or $selectedYear == '9999') :
 
 		$database			= JFactory::getDBO();
-		$query = 'SELECT COUNT(r.data1) as total,r.data1,rd.marker FROM #__eiko_einsatzberichte r ';
-		$query.='JOIN #__eiko_einsatzarten rd ON r.data1 = rd.title WHERE r.date1 LIKE "2%" AND (r.state = "1" OR r.state = "2") AND rd.state = "1"';
+		$query = 'SELECT COUNT(r.data1) as total,r.data1,rd.marker,rd.title as einsatzart FROM #__eiko_einsatzberichte r ';
+		$query.='JOIN #__eiko_einsatzarten rd ON r.data1 = rd.id WHERE r.date1 LIKE "2%" AND (r.state = "1" OR r.state = "2") AND rd.state = "1"';
 	          $query.=' GROUP BY r.data1 ' ;
 		$database->setQuery( $query );
 		$total = $database->loadObjectList();
@@ -47,8 +47,8 @@ if ($params->get( 'selectedYear', '2015' ) == '-- alle Jahre --' or $selectedYea
 
 		endif;
 		$database			= JFactory::getDBO();
-		$query = 'SELECT COUNT(r.data1) as total,r.data1,rd.marker FROM #__eiko_einsatzberichte r ';
-		$query.='JOIN #__eiko_einsatzarten rd ON r.data1 = rd.title WHERE Year(r.date1) LIKE "'.$selectedYear.'" AND (r.state = "1" OR r.state = "2") AND rd.state = "1"';
+		$query = 'SELECT COUNT(r.data1) as total,r.data1,rd.marker,rd.title as einsatzart FROM #__eiko_einsatzberichte r ';
+		$query.='JOIN #__eiko_einsatzarten rd ON r.data1 = rd.id WHERE Year(r.date1) LIKE "'.$selectedYear.'" AND (r.state = "1" OR r.state = "2") AND rd.state = "1"';
 	          $query.=' GROUP BY r.data1 ' ;
 		$database->setQuery( $query );
 		$total = $database->loadObjectList();
@@ -67,7 +67,7 @@ $Column = '';
 $Colors = '';
 for($i=0; $i < count($total); $i++)
    {
-   $Column.='["'.$total[$i]->data1.'",'.$total[$i]->total.'],';
+   $Column.='["'.$total[$i]->einsatzart.'",'.$total[$i]->total.'],';
    $Colors.='"'.$total[$i]->marker.'",';
    }
    $Column=substr($Column,0,strlen($Column)-1);

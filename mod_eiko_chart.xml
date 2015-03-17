@@ -8,7 +8,7 @@
 <extension type="module" version="3.0" client="site" method="upgrade">
 	<name>mod_eiko_chart</name>
 	<author>Ralf Meyer</author>
-	<creationDate>January 2015</creationDate>
+	<creationDate>17.03.15</creationDate>
 	<copyright>Copyright (c) 2015 EINSATZKOMPONENTE.DE. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>ralf.meyer@einsatzkomponente.de</authorEmail>
