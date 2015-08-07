@@ -16,7 +16,9 @@ $document =	JFactory::getDocument();
 //$document->addStyleSheet('modules/mod_eiko_slider/assets/css/jquery.bxslider.css');
 $document->addScript('https://www.google.com/jsapi'); 
 
+$app          = JFactory::getApplication();
 $selectedYear = $app->getUserStateFromRequest( "com_einsatzkomponente.selectedYear", 'year', "2015");
+
 
 
 		$database			= JFactory::getDBO();
@@ -39,12 +41,12 @@ if ($params->get( 'selectedYear', '2015' ) == '-- alle Jahre --' or $selectedYea
 	
 	else:
 		if ($params->get( 'curyear', '1' )) :
-		$selectedYear = date("Y");//echo $selectedYear;
+		$selectedYear = date("Y");
 		else:
 		$selectedYear = $params->get( 'selectedYear', '2015' );
+
 		$app                = JFactory::getApplication();
 		$selectedYear = $app->getUserStateFromRequest( "com_einsatzkomponente.selectedYear", 'year', $selectedYear );
-
 		endif;
 		$database			= JFactory::getDBO();
 		$query = 'SELECT COUNT(r.data1) as total,r.data1,rd.marker,rd.title as einsatzart FROM #__eiko_einsatzberichte r ';
@@ -106,7 +108,11 @@ for($i=0; $i < count($total); $i++)
       }
     </script>
 	
-	<div id="chart_div_<?php echo $zufall;?>" style="margin-left: auto;margin-right: auto;width: <?php echo $params->get( 'width', '600px' );?>px; height: <?php echo $params->get( 'pheight', '300px' );?>;"></div>
+	<style type="text/css">
+	<?php echo $params->get('css');?>
+	</style>
+
+	<div id="chart_div_<?php echo $zufall;?> eiko_chart<?php echo $moduleclass_sfx ?>" style="margin-left: auto;margin-right: auto;width: <?php echo $params->get( 'width', '600px' );?>px; height: <?php echo $params->get( 'pheight', '300px' );?>;"></div>
 
 	<?php
 	
