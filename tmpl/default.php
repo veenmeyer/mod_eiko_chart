@@ -112,7 +112,7 @@ for($i=0; $i < count($total); $i++)
 	<?php echo $params->get('css');?>
 	</style>
 
-	<div id="chart_div_<?php echo $zufall;?> eiko_chart<?php echo $moduleclass_sfx ?>" style="margin-left: auto;margin-right: auto;width: <?php echo $params->get( 'width', '600px' );?>px; height: <?php echo $params->get( 'pheight', '300px' );?>;"></div>
+	<div class="eiko_chart_<?php echo $params->get( 'moduleclass_sfx', '');?>" id="chart_div_<?php echo $zufall;?>" style="margin-left: auto;margin-right: auto;width: <?php echo $params->get( 'width', '600px' );?>px; height: <?php echo $params->get( 'pheight', '300px' );?>;"></div>
 
 	<?php
 	
