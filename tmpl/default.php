@@ -69,7 +69,7 @@ $Column = '';
 $Colors = '';
 for($i=0; $i < count($total); $i++)
    {
-   $Column.='["'.$total[$i]->einsatzart.'",'.$total[$i]->total.'],';
+   $Column.='["'.$total[$i]->total.' x '.$total[$i]->einsatzart.'",'.$total[$i]->total.'],';
    $Colors.='"'.$total[$i]->marker.'",';
    }
    $Column=substr($Column,0,strlen($Column)-1);
@@ -93,7 +93,7 @@ for($i=0; $i < count($total); $i++)
 		  width:<?php echo $params->get( 'pwidth', '630' );?>,
 		  height:<?php echo $params->get( 'pheight', '300' );?>,
 		  backgroundColor: 'transparent',
-		  legend : { position : 'right', textStyle: {color: '<?php echo $params->get( 'legend_color', '#ffffff' );?>', fontSize: <?php echo $params->get( 'legend_size', 10 );?>} },
+		  legend : { position : '<?php echo $params->get( 'legend_pos', 'right' );?>', textStyle: {color: '<?php echo $params->get( 'legend_color', '#ffffff' );?>', fontSize: <?php echo $params->get( 'legend_size', 10 );?>} },
 		  colors: [<?php echo $Colors;?>],
 		  titleTextStyle: {color: '<?php echo $params->get( 'title_color', '#ffffff' );?>',fontSize:<?php echo $params->get( 'title_size', 16 );?>},
 		  pieSliceText: 'percentage',
