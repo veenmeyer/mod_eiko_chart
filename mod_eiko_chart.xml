@@ -8,12 +8,12 @@
 <extension type="module" version="3.0" client="site" method="upgrade">
 	<name>mod_eiko_chart</name>
 	<author>Ralf Meyer</author>
-	<creationDate>2016-01-21</creationDate>
+	<creationDate>2016-03-06</creationDate>
 	<copyright>Copyright (c) 2015 EINSATZKOMPONENTE.DE. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>ralf.meyer@einsatzkomponente.de</authorEmail>
 	<authorUrl>einsatzkomponente.de</authorUrl>
-	<version>1.0.4</version>
+	<version>1.0.5</version>
 	<description><![CDATA[<div style="border:1px solid #000; padding-left:5px;"><span style=" font-size: 18px; color:#F00;"><b>mod_eiko_chart für J3.x</b></span><br/><br/><span style="font-size:10px;"></span>Das Modul dient zur Anzeige einer Statistik für die Einsatzberichte aus der Einsatzkomponente für J3<br/><br/>Für weitere Informationen besuchen Sie bitte unser Supportforum <a href="http://www.einsatzkomponente.de" target="_blank">einsatzkomponente.de</a> </div>
 	]]></description>	
 	
@@ -45,7 +45,7 @@
 						value="true">JYES</option>
 				</field>
 
-	<field name="selectedYear" type="text" default="2015" label="Statistik Jahr :" description="Wählen Sie hier das Jahr, das in der Statistik angezeigt werden soll" />
+	<field name="selectedYear" type="text" default="2016" label="Statistik Jahr :" description="Wählen Sie hier das Jahr, das in der Statistik angezeigt werden soll" />
 	
 				<field name="selectedYear" type="sql" class="inputbox"
             label="Filter Jahr :"
@@ -59,8 +59,20 @@
 					type="radio"
 					class="btn-group"
 					label="Nur Daten des aktuellen Jahres anzeigen ?"
-					description=""
+					description="Filter Jahr darf dabei nicht auf -alle Jahre- stehen"
 					default="1">
+					<option
+						value="0">JNO</option>
+					<option
+						value="1">JYES</option>
+				</field>
+				<field
+					name="filteryear"
+					type="radio"
+					class="btn-group"
+					label="Nur Daten des aktuell gefilterten Jahres anzeigen ?"
+					description="Filter Jahr darf dabei nicht auf -alle Jahre- stehen"
+					default="0">
 					<option
 						value="0">JNO</option>
 					<option

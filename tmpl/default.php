@@ -20,6 +20,7 @@ $app          = JFactory::getApplication();
 $selectedYear = $app->getUserStateFromRequest( "com_einsatzkomponente.selectedYear", 'year', "2015");
 
 
+//echo $selectedYear;
 
 		$database			= JFactory::getDBO();
 		$query = 'SELECT Year(date1) as id, Year(date1) as title FROM `#__eiko_einsatzberichte` GROUP BY title';
@@ -40,14 +41,19 @@ if ($params->get( 'selectedYear', '2015' ) == '-- alle Jahre --' or $selectedYea
 		$title = 'Einsatzstatistik für die Jahre von '.$firstyear.' bis '.$lastyear.'';
 	
 	else:
+		$selectedYear = $params->get( 'selectedYear', '2016' );
+		
 		if ($params->get( 'curyear', '1' )) :
 		$selectedYear = date("Y");
-		else:
-		$selectedYear = $params->get( 'selectedYear', '2015' );
-
-		$app                = JFactory::getApplication();
-		$selectedYear = $app->getUserStateFromRequest( "com_einsatzkomponente.selectedYear", 'year', $selectedYear );
 		endif;
+		
+		if ($params->get( 'filteryear', '0' )) :
+		$filter = ($app->getUserStateFromRequest('com_einsatzkomponente.filter', 'filter', array(), 'array')); 
+		if (isset($filter[year])) :
+		$selectedYear = $filter[year];
+		endif;
+		endif;
+		
 		$database			= JFactory::getDBO();
 		$query = 'SELECT COUNT(r.data1) as total,r.data1,rd.marker,rd.title as einsatzart FROM #__eiko_einsatzberichte r ';
 		$query.='JOIN #__eiko_einsatzarten rd ON r.data1 = rd.id WHERE Year(r.date1) LIKE "'.$selectedYear.'" AND (r.state = "1" OR r.state = "2") AND rd.state = "1"';
