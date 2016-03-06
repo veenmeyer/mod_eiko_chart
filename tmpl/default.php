@@ -17,7 +17,7 @@ $document =	JFactory::getDocument();
 $document->addScript('https://www.google.com/jsapi'); 
 
 $app          = JFactory::getApplication();
-$selectedYear = $app->getUserStateFromRequest( "com_einsatzkomponente.selectedYear", 'year', "2015");
+$selectedYear_old = $app->getUserStateFromRequest( "com_einsatzkomponente.selectedYear", 'year', "2016");
 
 
 //echo $selectedYear;
@@ -30,7 +30,7 @@ $selectedYear = $app->getUserStateFromRequest( "com_einsatzkomponente.selectedYe
 		$firstyear = $totalyears[0]->title;
 		$lastyear = $totalyears[$totalyears_count-1]->title;
 
-if ($params->get( 'selectedYear', '2015' ) == '-- alle Jahre --' or $selectedYear == '9999') :
+if ($params->get( 'selectedYear', '2015' ) == '-- alle Jahre --' or $selectedYear_old == '9999') :
 
 		$database			= JFactory::getDBO();
 		$query = 'SELECT COUNT(r.data1) as total,r.data1,rd.marker,rd.title as einsatzart FROM #__eiko_einsatzberichte r ';
@@ -53,6 +53,18 @@ if ($params->get( 'selectedYear', '2015' ) == '-- alle Jahre --' or $selectedYea
 		$selectedYear = $filter[year];
 		endif;
 		endif;
+
+		if ($selectedYear_old AND !$filter) : 		
+		$selectedYear = $selectedYear_old;
+		if ($params->get( 'curyear', '1' )) :
+		$selectedYear = date("Y");
+		endif;
+		endif;
+
+		if ($selectedYear == '') : 		
+		$selectedYear = date("Y");
+		endif;
+		
 		
 		$database			= JFactory::getDBO();
 		$query = 'SELECT COUNT(r.data1) as total,r.data1,rd.marker,rd.title as einsatzart FROM #__eiko_einsatzberichte r ';
@@ -65,7 +77,8 @@ if ($params->get( 'selectedYear', '2015' ) == '-- alle Jahre --' or $selectedYea
 endif;		
 
 	
-		
+	echo $selectedYear.'</br>';
+	echo $selectedYear_old.'</br>';
 		
 $zufall = rand(1,100000);
 
