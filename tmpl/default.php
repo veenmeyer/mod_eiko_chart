@@ -77,8 +77,8 @@ if ($params->get( 'selectedYear', '2015' ) == '-- alle Jahre --' or $selectedYea
 endif;		
 
 	
-	echo $selectedYear.'</br>';
-	echo $selectedYear_old.'</br>';
+	//echo $selectedYear.'</br>';
+	//echo $selectedYear_old.'</br>';
 		
 $zufall = rand(1,100000);
 
