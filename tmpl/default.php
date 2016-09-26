@@ -13,11 +13,12 @@ defined('_JEXEC') or die;
 
 
 $document =	JFactory::getDocument();
-//$document->addStyleSheet('modules/mod_eiko_slider/assets/css/jquery.bxslider.css');
 $document->addScript('https://www.google.com/jsapi'); 
 
 $app          = JFactory::getApplication();
-$selectedYear_old = $app->getUserStateFromRequest( "com_einsatzkomponente.selectedYear", 'year', "2016");
+$filter = date("Y");
+
+$selectedYear_old = $app->getUserStateFromRequest( "com_einsatzkomponente.selectedYear", 'year', $filter);
 
 
 //echo $selectedYear;
@@ -30,7 +31,7 @@ $selectedYear_old = $app->getUserStateFromRequest( "com_einsatzkomponente.select
 		$firstyear = $totalyears[0]->title;
 		$lastyear = $totalyears[$totalyears_count-1]->title;
 
-if ($params->get( 'selectedYear', '2015' ) == '-- alle Jahre --' or $selectedYear_old == '9999') :
+if ($params->get( 'selectedYear', '2016' ) == '-- alle Jahre --' or $selectedYear_old == '9999') :
 
 		$database			= JFactory::getDBO();
 		$query = 'SELECT COUNT(r.data1) as total,r.data1,rd.marker,rd.title as einsatzart FROM #__eiko_einsatzberichte r ';
