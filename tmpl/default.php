@@ -50,8 +50,8 @@ if ($params->get( 'selectedYear', '2016' ) == '-- alle Jahre --' or $selectedYea
 		
 		if ($params->get( 'filteryear', '0' )) :
 		$filter = ($app->getUserStateFromRequest('com_einsatzkomponente.filter', 'filter', array(), 'array')); 
-		if (isset($filter[year])) :
-		$selectedYear = $filter[year];
+		if (isset($filter['year'])) :
+		$selectedYear = $filter['year'];
 		endif;
 		endif;
 
