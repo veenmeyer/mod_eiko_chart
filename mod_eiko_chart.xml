@@ -8,12 +8,12 @@
 <extension type="module" version="3.0" client="site" method="upgrade">
 	<name>mod_eiko_chart</name>
 	<author>Ralf Meyer</author>
-	<creationDate>2016-12-28</creationDate>
-	<copyright>Copyright (c) 2015 EINSATZKOMPONENTE.DE. All rights reserved.</copyright>
+	<creationDate>2017-12-17</creationDate>
+	<copyright>Copyright (c) 2017 EINSATZKOMPONENTE.DE. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>ralf.meyer@einsatzkomponente.de</authorEmail>
 	<authorUrl>einsatzkomponente.de</authorUrl>
-	<version>1.0.8</version>
+	<version>1.0.9</version>
 	<description><![CDATA[<div style="border:1px solid #000; padding-left:5px;"><span style=" font-size: 18px; color:#F00;"><b>mod_eiko_chart für J3.x</b></span><br/><br/><span style="font-size:10px;"></span>Das Modul dient zur Anzeige einer Statistik für die Einsatzberichte aus der Einsatzkomponente für J3<br/><br/>Für weitere Informationen besuchen Sie bitte unser Supportforum <a href="https://www.einsatzkomponente.de" target="_blank">einsatzkomponente.de</a> </div>
 	]]></description>	
 	
