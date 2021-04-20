@@ -8,12 +8,12 @@
 <extension type="module" version="3.0" client="site" method="upgrade">
 	<name>mod_eiko_chart</name>
 	<author>Ralf Meyer</author>
-	<creationDate>2017-12-17</creationDate>
+	<creationDate>2021-04-20</creationDate>
 	<copyright>Copyright (c) 2017 EINSATZKOMPONENTE.DE. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>ralf.meyer@einsatzkomponente.de</authorEmail>
 	<authorUrl>einsatzkomponente.de</authorUrl>
-	<version>1.0.9</version>
+	<version>1.0.10</version>
 	<description><![CDATA[<div style="border:1px solid #000; padding-left:5px;"><span style=" font-size: 18px; color:#F00;"><b>mod_eiko_chart für J3.x</b></span><br/><br/><span style="font-size:10px;"></span>Das Modul dient zur Anzeige einer Statistik für die Einsatzberichte aus der Einsatzkomponente für J3<br/><br/>Für weitere Informationen besuchen Sie bitte unser Supportforum <a href="https://www.einsatzkomponente.de" target="_blank">einsatzkomponente.de</a> </div>
 	]]></description>	
 	
@@ -147,7 +147,7 @@
 <!-- UPDATESERVER DEFINITION -->
 	<updateservers>
 		<!-- Note: No spaces or linebreaks allowed between the server tags -->
-		<server type="extension" priority="1" name="mod_eiko_chart">https://www.feuerwehr-veenhusen.de/update/mod_eiko_chart-update.xml</server>
+		<server type="extension" priority="1" name="mod_eiko_chart">https://einsatzkomponente.joomla100.com/update/mod_eiko_chart-update.xml</server>
 	</updateservers>
 
 	</extension>

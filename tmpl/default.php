@@ -102,7 +102,7 @@ for($i=0; $i < count($total); $i++)
 
 ?>
     <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]}); 
+      google.charts.load("49", {packages: ["corechart"]}); 
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
